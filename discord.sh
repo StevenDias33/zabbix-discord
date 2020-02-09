@@ -16,13 +16,13 @@ CURL_BODY=$(json_escape "${IN_BODY}")
 
 if [[ "${IN_SUBJECT}" =~ ^(PROBLEM:|Problem:).*$ ]] ; then
     echo "We received a PROBLEM!"
-    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.52.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/96/sign-warning-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607908574261280788/sw8jNYmN7_LX99fACQhqGreHfIlf-nZzas8tOVYGlIy0MPrngWoZTvSUONBt4bbf1PDw`
+    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.0.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/96/sign-warning-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607614523603419158/4-fhED0xsGJy4PETx7N8jnJWRaCwqul_iB8jSRjBvv6Or2kcEB6oyldie4HM6DKphHDB`
 elif [[ "${IN_SUBJECT}" =~ ^(OK:|Resolved:).*$ ]] ; then
     echo "We received OKAY!"
-    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.52.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-check-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607908574261280788/sw8jNYmN7_LX99fACQhqGreHfIlf-nZzas8tOVYGlIy0MPrngWoZTvSUONBt4bbf1PDw`
+    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.0.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-check-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607614523603419158/4-fhED0xsGJy4PETx7N8jnJWRaCwqul_iB8jSRjBvv6Or2kcEB6oyldie4HM6DKphHDB`
 else
     echo "Dunno what this was: ${IN_SUBJECT}"
-    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.52.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-question-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607908574261280788/sw8jNYmN7_LX99fACQhqGreHfIlf-nZzas8tOVYGlIy0MPrngWoZTvSUONBt4bbf1PDw`
+    HTTP_RESPONSE=`curl --write-out %{http_code} --silent --output /dev/null -X POST --data '{ "embeds": [{"title": '"${CURL_SUBJECT}"', "url": "http://192.168.0.38/zabbix", "description": '"${CURL_BODY}"', "type": "link", "thumbnail": {"url": "http://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-question-icon.png"}}] }' -H "Content-Type: application/json" https://discordapp.com/api/webhooks/607614523603419158/4-fhED0xsGJy4PETx7N8jnJWRaCwqul_iB8jSRjBvv6Or2kcEB6oyldie4HM6DKphHDB`
 fi
 
 if [[ "${HTTP_RESPONSE}" != "204" ]] ; then
